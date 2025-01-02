@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bookmarks</title>
+</head>
+<body>
+<h1>Bookmark Categories</h1>
+<ul>
+    {% for category in categories %}
+        <li><a href="{% url 'category_detail' category.id %}">{{ category.name }}</a></li>
+    {% endfor %}
+</ul>
+</body>
+</html>
