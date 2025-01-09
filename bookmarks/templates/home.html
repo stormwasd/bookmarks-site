@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}All Categories{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+{#        <h1 class="mb-4 text-center">Bookmark Categories</h1>#}
+        <div class="row justify-content-center">
+            {% for category in page_obj %}
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-header bg-primary text-white text-center">
+                            <h5 class="card-title m-0">{{ category.name }}</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ category.description|default:"No description available" }}</p>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="{% url 'category_detail' category.id %}" class="btn btn-outline-primary btn-sm">
+                                View Bookmarks
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+        <!-- 分页导航 -->
+        <nav aria-label="Category Pagination">
+            <ul class="pagination justify-content-center">
+                {% if page_obj.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page=1">First</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                    </li>
+                {% endif %}
+
+                <li class="page-item disabled">
+                    <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+                </li>
+
+                {% if page_obj.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+{% endblock %}

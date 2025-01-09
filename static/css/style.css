@@ -1,0 +1,91 @@
+/* Reset some default margins */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1; /* Ensure main content takes up available space */
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #000000;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+.card {
+    border-radius: 10px; /* 更圆滑的卡片边角 */
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+    font-size: 16px; /* 调整标题大小 */
+}
+
+.card-text {
+    font-size: 14px; /* 调整描述文字大小 */
+    color: #666; /* 较浅的颜色 */
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.card-footer .btn {
+    padding: 5px 10px; /* 更小的按钮 */
+    font-size: 14px;
+}
+
+.container {
+    max-width: 1200px; /* 控制页面宽度 */
+}
+
+/* 默认明亮模式 */
+:root {
+    --background-color: #ffffff;
+    --text-color: #000000;
+    --card-background-color: #f8f9fa;
+    --card-text-color: #212529;
+    --link-color: #007bff;
+}
+
+/* 黑暗模式 */
+body.dark-mode {
+    --background-color: #121212;
+    --text-color: #ffffff;
+    --card-background-color: #1e1e1e;
+    --card-text-color: #e0e0e0;
+    --link-color: #bb86fc;
+}
+
+/* 应用变量 */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+.card {
+    background-color: var(--card-background-color);
+    color: var(--card-text-color);
+}
+
+a {
+    color: var(--link-color);
+}

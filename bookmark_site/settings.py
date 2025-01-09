@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -55,14 +55,16 @@ ROOT_URLCONF = 'bookmark_site.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # 指定模板路径
+        'APP_DIRS': True,  # 允许 Django 在 app 中的 templates 文件夹查找模板
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.debug',  # 在调试模式下，提供调试信息到模板上下文中。例如，{{ debug }} 可以显示调试状态，用于开发环境中的调试。
+                'django.template.context_processors.request',  # 将 HttpRequest 对象注入模板上下文中。通过 {{ request
+                # }}，可以在模板中直接访问当前的请求对象，例如获取用户的 IP、请求路径等。例如，{{ request.user }} 可以访问当前用户。
+                'django.contrib.auth.context_processors.auth',  # 为模板上下文注入与用户认证相关的变量。例如，{{ user }} 可以访问当前用户，{{ perms
+                # }} 可以访问当前用户的权限。{{ user.is_authenticated }}：当前用户是否已登录。
+                'django.contrib.messages.context_processors.messages',  # 提供消息框架支持，将消息注入模板上下文。例如，在模板中可以通过 {{ messages }} 访问系统消息，例如登录成功或出错时的提示。
             ],
         },
     },
@@ -127,6 +129,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
