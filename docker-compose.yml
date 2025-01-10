@@ -28,8 +28,8 @@ services:
       MYSQL_DATABASE: bookmark_site
     ports:
       - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
+#    volumes:
+#      - db_data:/var/lib/mysql
 
 volumes:
   db_data:
