@@ -9,11 +9,13 @@ WORKDIR /app
 COPY . /app
 
 # 安装项目依赖
-RUN apt-get update && apt-get install -y \
+RUN apt-get update --allow-releaseinfo-change && apt-get install -y \
     build-essential \
     libmysqlclient-dev \
     default-libmysqlclient-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
+
+
 
 
 # 安装依赖
