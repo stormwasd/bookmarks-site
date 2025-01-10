@@ -8,6 +8,13 @@ WORKDIR /app
 # 复制项目文件到镜像中
 COPY . /app
 
+# 安装项目依赖
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libmysqlclient-dev \
+    default-libmysqlclient-dev \
+    && apt-get clean
+
 # 安装依赖
 RUN pip install --no-cache-dir --upgrade pip \
     && pip install --no-cache-dir -r requirements.txt
