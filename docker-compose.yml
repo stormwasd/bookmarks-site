@@ -8,7 +8,7 @@ services:
     image: storm/bookmark_site:version1
     command: python3 manage.py runserver 0.0.0.0:8030
     volumes:
-      - ./settings.py:/app//app/bookmark_site/settings.py
+      - ./settings.py:/app/bookmark_site/settings.py
     ports:
       - "8030:8030"
     depends_on:
@@ -19,6 +19,8 @@ services:
       - DB_NAME=bookmark_site
       - DB_USER=root
       - DB_PASSWORD=rootpassword
+    networks:
+      - bookmark_site_network
 
   bookmark_site_db:
     image: mysql:5.7
@@ -31,4 +33,8 @@ services:
       - "3306:3306"
     volumes:
       - db_data:/var/lib/mysql
+    networks:
+      - bookmark_site_network
 
+networks:
+  bookmark_site_network:
