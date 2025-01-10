@@ -1,5 +1,5 @@
 # 基础镜像
-FROM python:3.10-slim
+FROM python:3.10
 #FROM python@sha256:10f3aaab98db50cba827d3b33a91f39dc9ec2d02ca9b85cbc5008220d07b17f3
 
 # 设置工作目录
