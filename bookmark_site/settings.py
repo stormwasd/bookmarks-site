@@ -76,18 +76,29 @@ WSGI_APPLICATION = 'bookmark_site.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     # 'default': {
+#     #     'ENGINE': 'django.db.backends.sqlite3',
+#     #     'NAME': BASE_DIR / 'db.sqlite3',
+#     # }
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
+#         'HOST': '127.0.0.1',  # 数据库主机
+#         'PORT': 3306,  # 数据库端口
+#         'USER': 'root',  # 数据库用户名
+#         'PASSWORD': 'zx360828htc',  # 数据库用户密码
+#         'NAME': 'bookmark_site'  # 数据库名字
+#     }
+# }
+
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # }
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
-        'HOST': '127.0.0.1',  # 数据库主机
-        'PORT': 3306,  # 数据库端口
-        'USER': 'root',  # 数据库用户名
-        'PASSWORD': 'zx360828htc',  # 数据库用户密码
-        'NAME': 'bookmark_site'  # 数据库名字
+        'HOST': os.getenv('DB_HOST', '127.0.0.1'),  # 数据库主机，默认为本地
+        'PORT': int(os.getenv('DB_PORT', 3306)),  # 数据库端口，默认为3306
+        'USER': os.getenv('DB_USER', 'root'),  # 数据库用户名，默认为root
+        'PASSWORD': os.getenv('DB_PASSWORD', ''),  # 数据库密码，默认为空
+        'NAME': os.getenv('DB_NAME', 'bookmark_site'),  # 数据库名字，默认为bookmark_site
     }
 }
 

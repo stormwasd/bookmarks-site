@@ -1,25 +1,26 @@
 version: '3.8'
 
 services:
-  web:
-    build:
-      context: .
-    container_name: bookmark_site_web
+  bookmark_site_web:
+#    build:
+#      context: .
+#    container_name: bookmark_site_web
+    image: storm/bookmark_site:version1
     command: python manage.py runserver 0.0.0.0:8030
-    volumes:
-      - .:/app
+#    volumes:
+#      - .:/app
     ports:
       - "8030:8030"
     depends_on:
-      - db
+      - bookmark_site_db
     environment:
-      - DB_HOST=db
+      - DB_HOST=bookmark_site_db
       - DB_PORT=3306
       - DB_NAME=bookmark_site
       - DB_USER=root
       - DB_PASSWORD=rootpassword
 
-  db:
+  bookmark_site_db:
     image: mysql:8.0
     container_name: mysql_db_web
     environment:
