@@ -1,18 +1,21 @@
-# 使用 Debian 作为基础镜像
-FROM debian:bookworm
+## 使用 Debian 作为基础镜像
+#FROM debian:bookworm
+#
+## 安装 Python 和必要工具
+#RUN apt-get update && apt-get install -y \
+#    python3 \
+#    python3-pip \
+#    python3-dev \
+#    build-essential \
+#    libmysqlclient-dev \
+#    default-libmysqlclient-dev \
+#    && apt-get clean && rm -rf /var/lib/apt/lists/*
+#
+## 设置 Python 默认版本
+#RUN ln -s /usr/bin/python3 /usr/bin/python && ln -s /usr/bin/pip3 /usr/bin/pip
 
-# 安装 Python 和必要工具
-RUN apt-get update && apt-get install -y \
-    python3 \
-    python3-pip \
-    python3-dev \
-    build-essential \
-    libmysqlclient-dev \
-    default-libmysqlclient-dev \
-    && apt-get clean && rm -rf /var/lib/apt/lists/*
+FROM python:3.10-bullseye
 
-# 设置 Python 默认版本
-RUN ln -s /usr/bin/python3 /usr/bin/python && ln -s /usr/bin/pip3 /usr/bin/pip
 
 # 设置工作目录
 WORKDIR /app
