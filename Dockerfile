@@ -8,8 +8,11 @@ WORKDIR /app
 # 复制项目文件到镜像中
 COPY . /app
 
-# 安装项目依赖
-RUN apt-get update --allow-releaseinfo-change && apt-get install -y \
+
+# 禁用 APT 自动清理脚本并安装依赖
+RUN echo 'APT::Update::Post-Invoke-Success {"echo apt update success;"};' > /etc/apt/apt.conf.d/99fix \
+    && apt-get update \
+    && apt-get install -y \
     build-essential \
     libmysqlclient-dev \
     default-libmysqlclient-dev \
