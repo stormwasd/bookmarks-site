@@ -1,6 +1,6 @@
 # 基础镜像
-#FROM python:3.12-slim
-FROM python@sha256:10f3aaab98db50cba827d3b33a91f39dc9ec2d02ca9b85cbc5008220d07b17f3
+FROM python:3.10-slim
+#FROM python@sha256:10f3aaab98db50cba827d3b33a91f39dc9ec2d02ca9b85cbc5008220d07b17f3
 
 # 设置工作目录
 WORKDIR /app
@@ -13,7 +13,8 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     libmysqlclient-dev \
     default-libmysqlclient-dev \
-    && apt-get clean
+    && apt-get clean && rm -rf /var/lib/apt/lists/*
+
 
 # 安装依赖
 RUN pip install --no-cache-dir --upgrade pip \
