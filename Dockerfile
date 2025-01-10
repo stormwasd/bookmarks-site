@@ -9,10 +9,10 @@ WORKDIR /app
 COPY . /app
 
 
-# 禁用 APT 自动清理脚本并安装依赖
-RUN echo 'APT::Update::Post-Invoke-Success {"echo apt update success;"};' > /etc/apt/apt.conf.d/99fix \
-    && apt-get update \
-    && apt-get install -y \
+# 禁用所有 APT 自动清理脚本并安装依赖
+RUN echo 'APT::Update::Post-Invoke-Success "";' > /etc/apt/apt.conf.d/99fix && \
+    echo 'APT::Update::Post-Invoke "";' >> /etc/apt/apt.conf.d/99fix && \
+    apt-get update && apt-get install -y \
     build-essential \
     libmysqlclient-dev \
     default-libmysqlclient-dev \
