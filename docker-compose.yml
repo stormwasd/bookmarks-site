@@ -22,6 +22,7 @@ services:
 
   bookmark_site_db:
     image: mysql:8.0
+    user: root
     container_name: mysql_db_web
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
