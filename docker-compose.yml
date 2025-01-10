@@ -4,7 +4,7 @@ services:
   bookmark_site_web:
 #    build:
 #      context: .
-#    container_name: bookmark_site_web
+    container_name: bookmark_site_web
     image: storm/bookmark_site:version1
     command: python3 manage.py runserver 0.0.0.0:8030
     volumes:
