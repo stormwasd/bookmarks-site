@@ -36,5 +36,8 @@ services:
     networks:
       - bookmark_site_network
 
+volumes:
+  db_data:
+
 networks:
   bookmark_site_network:
