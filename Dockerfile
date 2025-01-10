@@ -14,7 +14,7 @@
 ## 设置 Python 默认版本
 #RUN ln -s /usr/bin/python3 /usr/bin/python && ln -s /usr/bin/pip3 /usr/bin/pip
 
-FROM python:3.10-bullseye
+FROM python:3.9
 
 
 # 设置工作目录
