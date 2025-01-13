@@ -3,6 +3,14 @@
 """
 @Description:
 @Author: lihoujian
+@Time: 2025/1/13 18:16
+@Module: create_default_user
+"""
+# !/usr/bin/python3.8
+# -*- coding: utf-8 -*-
+"""
+@Description:
+@Author: lihoujian
 @Time: 2025/1/13 16:47
 @Module: create_default_user
 """
