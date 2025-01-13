@@ -44,3 +44,4 @@ volumes:
 
 networks:
   bookmark_site_network:
+    external: True
