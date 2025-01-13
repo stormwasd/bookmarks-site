@@ -6,9 +6,12 @@ services:
 #      context: .
     container_name: bookmark_site_web
     image: storm/bookmark_site:version1
-    command: python3 manage.py runserver 0.0.0.0:8030
+    command: >
+      sh -c "python3 manage.py runserver 0.0.0.0:8030 &&
+             python3 manage.py create_default_user.py"
     volumes:
       - ./settings.py:/app/bookmark_site/settings.py
+      - ./create_default_user.py:/app/create_default_user.py
     ports:
       - "8030:8030"
     depends_on:
