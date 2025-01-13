@@ -94,11 +94,11 @@ WSGI_APPLICATION = 'bookmark_site.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
-        'HOST': os.getenv('DB_HOST', '127.0.0.1'),  # 数据库主机，默认为本地
-        'PORT': int(os.getenv('DB_PORT', 3306)),  # 数据库端口，默认为3306
-        'USER': os.getenv('DB_USER', 'root'),  # 数据库用户名，默认为root
-        'PASSWORD': os.getenv('DB_PASSWORD', ''),  # 数据库密码，默认为空
-        'NAME': os.getenv('DB_NAME', 'bookmark_site'),  # 数据库名字，默认为bookmark_site
+        'HOST': 'bookmark_site_db',  # 数据库主机，默认为本地
+        'PORT': 3306,  # 数据库端口，默认为3306
+        'USER': 'root',  # 数据库用户名，默认为root
+        'PASSWORD': 'rootpassword',  # 数据库密码，默认为空
+        'NAME': 'bookmark_site',  # 数据库名字，默认为bookmark_site
     }
 }
 
